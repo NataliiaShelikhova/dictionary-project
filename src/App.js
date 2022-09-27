@@ -10,6 +10,9 @@ function App() {
           <span className='logo'>Your Dictionary</span>
           <Dictionary />
         </header>
+        <footer>
+          <p>Coded by Nata Shelikhova and is <a href='https://github.com/NataliiaShelikhova/dictionary-project' target="_blanck" rel="noopener, noreferrer">opensorced</a></p>
+        </footer>
 
       </div>
     
