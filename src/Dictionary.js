@@ -24,6 +24,10 @@ export default function Dictionary(props) {
         setPhoto(response.data.photos);
 
     }
+    function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
   
     function search() {
         
@@ -43,7 +47,7 @@ export default function Dictionary(props) {
         return (
             <div className="Dictionary">
                 <section>
-                    <form onSubmit={search}>
+                    <form onSubmit={handleSubmit}>
                         <input type="search" autoFocus={true} onChange={wordChange} />
                     </form>
                 </section>
