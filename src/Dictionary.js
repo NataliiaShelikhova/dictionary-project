@@ -23,10 +23,12 @@ export default function Dictionary() {
     }
 
     return (
-        <div>
+        <div className="Dictionary">
+            <section>
             <form onSubmit={search}>
                 <input type="search" autoFocus={true} onChange={wordChange} />
-            </form>
+                </form>
+            </section>
             <Result results={result} />
 
         </div>
