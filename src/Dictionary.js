@@ -6,10 +6,11 @@ import Photos from"./Photos";
 
 
 
-export default function Dictionary() {
-    let [word, setWord] = useState(null);
+export default function Dictionary(props) {
+    let [word, setWord] = useState(props.defaultKeyWord);
     let [result, setResult] = useState(null);
     let [photo, setPhoto] = useState(null);
+    let [loaded, setLoaded] = useState(false);
     function handleResponse(response) {
         setResult(response.data[0]);
 
@@ -17,13 +18,15 @@ export default function Dictionary() {
     function wordChange(event) {
         setWord(event.target.value);
     }
+ 
     function handlePexelsResponse(response) {
         console.log(response.data.photos);
         setPhoto(response.data.photos);
 
     }
-    function search(event) {
-        event.preventDefault();
+  
+    function search() {
+        
         
         let apiUrl = `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`;
         axios.get(apiUrl).then(handleResponse);
@@ -31,16 +34,25 @@ export default function Dictionary() {
         let pexelsApiUrl = `https://api.pexels.com/v1/search?query=${word}&per_page=6`;
         axios.get(pexelsApiUrl, { headers: { Authorization: `Bearer ${pexelsApiKey}` }, }).then(handlePexelsResponse);
     }
-
-    return (
-        <div className="Dictionary">
-            <section>
-            <form onSubmit={search}>
-                <input type="search" autoFocus={true} onChange={wordChange} />
-                </form>
-            </section>
-            <Result results={result} />
-            <Photos photos={photo} />
-        </div>
-    )
+           function load() {
+        setLoaded(true);
+        search();
+    }
+  
+    if (loaded) {
+        return (
+            <div className="Dictionary">
+                <section>
+                    <form onSubmit={search}>
+                        <input type="search" autoFocus={true} onChange={wordChange} />
+                    </form>
+                </section>
+                <Result results={result} />
+                <Photos photos={photo} />
+            </div>
+        )
+    } else {
+        load()
+        return "load"
+    }
 }
