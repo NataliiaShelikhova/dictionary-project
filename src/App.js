@@ -11,7 +11,8 @@ function App() {
           <Dictionary defaultKeyWord="dog" />
         </header>
         <footer>
-          <p>Coded by Nata Shelikhova and is <a href='https://github.com/NataliiaShelikhova/dictionary-project' target="_blanck" rel="noopener, noreferrer">opensorced</a></p>
+          <p>Coded by <a href="https://astounding-chaja-60425e.netlify.app" target="_blank" rel="noreferrer"
+          >Nata Shelikhova</a>  and is <a href='https://github.com/NataliiaShelikhova/dictionary-project' target="_blanck" rel="noopener, noreferrer">opensorced</a></p>
         </footer>
 
       </div>
